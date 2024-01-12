@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <meta charset = "utf-8">
+      <title>01057034-Exercise5-2</title>
+    </head>
+      <body>
+        <labal> Side Length( <=10): </labal>
+        <input id = "len" type="number" value = "5" >
+        <button id = "" value = "" onclick="Baseball_Triangle()">Draw Baseball Triangle</button>
+        <button id = "" value = "" onclick="Baseball_Baseball()">Draw Baseball Square</button>
+        <button id = "" value = "" onclick="Special_Square()">Draw Special Square</button>
+        <hr>
+        <div id = "result">
+
+        </div>
+    
+      <script type="text/javascript">
+
+        function Baseball_Triangle(){
+            var input = document.getElementById( "len" );
+            var len = parseInt( input.value );
+
+            if (len > 10 || len <0)
+            {
+                len = 5;
+                window.alert( "user inputs an invalid value (< 0 or >10)" );
+            }
+            
+            let output = "";
+            
+            for (var i=0;i<len;i++)
+            {
+                for (var k=len-i-2;k>=0;k--)
+                {
+                    output= output+"<img src='blank.png' width='50px' height='50px'>";
+                }
+                for (var j=0;j<=i;j++)
+                {
+                    output= output+"<img src='baseball.jpg' width='50px' height='50px'>";
+                }
+                output+="</br>";
+            }
+            var result = document.getElementById( "result" );
+            result.innerHTML = output;
+        }
+
+        function Baseball_Baseball(){
+            var input = document.getElementById( "len" );
+            var len = parseInt( input.value );
+            
+            if (len > 10 || len <0)
+            {
+                len = 5;
+                window.alert( "user inputs an invalid value (< 0 or >10)" );
+            }
+
+            let output = "";
+            for (var i=0;i<len;i++)
+            {
+                for (var j=0;j<len;j++)
+                {
+                    output= output+"<img src='baseball.jpg' width='50px' height='50px'>";
+                }
+                output+="</br>";
+            }
+            var result = document.getElementById( "result" );
+            result.innerHTML = output;
+        }
+
+        function Special_Square(){
+            var input = document.getElementById( "len" );
+            var len = parseInt( input.value );
+            
+            if (len > 10 || len <0)
+            {
+                len = 5;
+                window.alert( "user inputs an invalid value (< 0 or >10)" );
+            }
+            
+            let output = "";
+            let img = [
+            "<img src='baseball.jpg' width='50px' height='50px'>",
+            "<img src='baseball-x.jpg' width='50px' height='50px'>",
+            "<img src='baseball.jpg' width='50px' height='50px'>"
+            ];
+            for (var i=0;i<len;i++)
+            {
+                for (var j=0;j<len;j++)
+                {
+                    var rand = Math.floor(Math.random() * 2);
+                    output= output+img[rand];
+                }
+                output+="</br>";
+            }
+            var result = document.getElementById( "result" );
+            result.innerHTML = output;
+        }
+        
+        </script>
+    </body>
+    
+    
+</html> 

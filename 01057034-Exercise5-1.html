@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01057034-Exercise5-1</title>
+    <style type="text/CSS">
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+        }
+
+        input, select, button {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 120%;
+            width: 200px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .result {
+            font-size: 120%;     
+            padding: 10px;
+            border: 3px solid #ddd;
+            width: 200px;
+            text-align: center;
+            box-sizing: border-box;
+         }
+
+	</style>
+</head>
+
+<body>
+    
+    <h3>Simple Calculator</h3>
+    <div class="calculator">
+        <input id = "a" type="number" width="200px" placeholder = "Input first number">
+
+        <select id = "operator" name="operator" width=200px >
+            <option value="1">+</option>
+            <option value="2">-</option>
+            <option value="3">*</option>
+            <option value="4">/</option>
+        </select>
+          
+
+        <input id="b" type="number" width="200px" placeholder = "Input second number">
+
+        <button id = "calculateButton" type = "button" value = "Calculate" onclick="myFunction()">Calculate</button>
+    </div>
+
+    <div id="result" class="result" >
+        Results
+    </div>
+
+
+    <script type="text/javascript">
+
+    function myFunction() {
+        var inputA = document.getElementById( "a" );
+        var inputB = document.getElementById( "b" );
+        var operator = document.getElementById( "operator" ).value;
+        var A = parseInt( inputA.value );
+        var B = parseInt( inputB.value );
+        var result = document.getElementById( "result" );
+        
+        switch (operator) {
+            case "1":
+                result.innerHTML = A + B;
+            break;
+            case "2":
+                result.innerHTML = A - B;
+            break;
+            case "3":
+                result.innerHTML = A * B;
+            break;
+            case "4":
+                if (B == 0)
+                    result.innerHTML = "Dividing by 0 is illegal";
+                else
+                    result.innerHTML = A / B;
+            break;
+            default:
+            return;
+        }
+                
+    }
+            
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01057034-Exercise9-2</title>
+    <style>
+        /* Set initial styles for the images */
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas"></div>
+
+    <script>
+        const picAry = ["microsoft", "google", "yahoo", "facebook", "ibm", "apple"];
+
+        document.addEventListener("DOMContentLoaded", 
+        function () {
+            
+            // Function to shuffle the array
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            // Function to update the position of images
+            function updatePositions() {
+                const canvas = document.getElementById("canvas");
+
+                if (!canvas) return; // Check if the canvas is available
+
+                // Shuffle the array
+                shuffleArray(picAry);
+
+                // Clear the existing images
+                canvas.innerHTML = "";
+
+                // Add images with random positions
+                picAry.forEach(company => {
+                    const img = document.createElement("img");
+                    img.src = company + ".png"; // Assuming image files are named like "microsoft.png"
+                    img.style.top = getRandomCoordinate() + "px";
+                    img.style.left = getRandomCoordinate() + "px";
+                    canvas.appendChild(img);
+                });
+            }
+
+            // Function to get a random coordinate between 100 and 400
+            function getRandomCoordinate() {
+                return Math.floor(Math.random() * 300) + 100;
+            }
+
+            // Set interval to update positions every 2 seconds
+            setInterval(updatePositions, 2000);
+
+            // Initial call to set up the initial view
+            updatePositions();
+        });
+    </script>
+</body>
+
+</html>

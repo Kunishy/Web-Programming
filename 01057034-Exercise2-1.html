@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01057034-Exercise2-1</title>
+
+    <!-- this begins the style sheet section -->
+    <style type = "text/css">
+        input { 
+            font-family: Perpetua;  
+            font-weight: 600; 
+            color: blue; 
+        }   
+        em,label,h3 {
+            font-family: Perpetua;  
+			font-size: 1.3em;	
+        }
+        h3::first-letter{
+            font-family: Perpetua;  
+            font-size: 1.5em;
+        }
+        em::first-letter{
+            font-family: Perpetua;  
+            font-size: 1.5em;
+        }
+        label::first-letter{
+            font-family: Perpetua;  
+            font-size: 1.5em;
+        }
+        p em input  {
+            color: firebrick;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h3>Advanced Web Form</h3>
+    <form method = "post" action = "https://web-form-2023-97724a1c7fb1.herokuapp.com/">
+        <p>
+            <label>Your name:
+                <input name="fullname">
+            </label>
+        </p>
+        <p>
+            <label>Your email:
+                <input name="email" type = "email" placeholder = "name@domain.com" required /> 
+                (name@domain.com)
+            </label>
+        </p>
+        <p>
+            <label>Your homepage's URL:
+                <input name="url" type = "url" placeholder = "http://www.domainname.com" /> 
+                (http://www.domainname.com)
+            </label>
+        </p>
+        <p>
+            <label>Your birthday date:
+                <input name="date" type = "date" /> 
+                (yyyy-mm-dd)
+            </label>
+        </p>
+        <p>
+            <label>Your favorite color:
+                <input name="color" type = "color" autofocus />
+            </label>
+        </p>
+        <p>
+            <label for = "txtList">Your Department:
+                <input name="department" type = "text" id = "txtList" placeholder = "Select a Department" list = "Department" />
+                <datalist id = "Department">
+                    <option value = "Department of Aquaculture">
+                    <option value = "Department of Bioscience and Biotechnology">
+                    <option value = "Department of Communications, Navigation and Control Engineering">
+                    <option value = "Department of Computer Science and Engineering">
+                    <option value = "Department of Electrical Engineering">
+                    <option value = "Department of Environmental Biology and Fisheries Science">
+                    <option value = "Department of Food Science">
+                    <option value = "Department of Harbor and River Engineering">
+                    <option value = "Department of Marine Engineering">
+                    <option value = "Department of Marine Environmental Informatics">
+                    <option value = "Department of Mechanical and Mechatronic Engineering">
+                    <option value = "Department of Merchant Marine">  
+                    <option value = "Department of Optoelectronics and Materials Technology">   
+                    <option value = "Department of Shipping and Transportation Management">   
+                    <option value = "Department of Systems Engineering and Naval Architecture">                   
+                    <option value = "Department of Transportation Science">   
+                </datalist>
+            </label>
+        </p>
+        <p>
+            <strong><em>Check off all of the characteristics that you enjoyed about the college:</em></strong><br />
+        </p>
+        <p>
+            <label>
+                <input name="likes" type = "checkbox" value = "Campus">Campus
+            </label>
+            <label>
+                <input name="likes" type = "checkbox" value = "Students">Students
+            </label>
+            <label>
+                <input name="likes" type = "checkbox" value = "Location">Location
+            </label>
+        </p>
+        <p><strong><em>How did you become interested in our college?</em></strong><br />
+        </p>
+        <p>
+            <label>
+                <input name="interest" type = "radio" value = "Friends" checked>Friends
+            </label>
+            <label>
+                <input name="interest" type = "radio" value = "Television" checked>Television
+            </label>
+            <label>
+                <input name="interest" type = "radio" value = "Internet" checked>Internet
+            </label>
+        </p>
+        <p>
+            <em>
+                <input type = "submit" value = "Submit" />
+                <input type = "reset" value = "Clear" />
+            </em>
+        </p>
+    </form>
+</body>
+
+</html>

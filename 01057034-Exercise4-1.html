@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>01057034-Exercise4-1</title>
+      <style type = "text/css">
+        h1 {
+            font-family:Helvetica;
+        }
+        b {
+          color:Navy;
+          text-decoration:underline;
+          font-family:Helvetica;
+        }
+        span {
+          color:Firebrick;
+          font-weight:bolder;
+          font-family:Helvetica;
+        }
+      </style>
+      <script>
+        var name; 
+        var birth_year;
+        var age;
+        var now = new Date();
+        var Year = now.getFullYear();
+        
+        name = window.prompt( "Please enter your name" );
+        birth_year = window.prompt( "Please enter your birth year" );
+
+
+        number1 = parseInt( birth_year ); 
+        age = Year-number1
+        if (age == 1)
+        {
+          console.log("Hello " + name + "!")
+          console.log("You are one year old!")
+          document.writeln( "<h1>Hello <span>" + name + "</span>!<br/>You are <b>one</b> year old!</h1>" );
+        }
+        else if (age > 0)
+        {
+          console.log("Hello " + name + "!")
+          console.log("You are "+age+" year old!")
+          document.writeln( "<h1>Hello <span>" + name + "</span>!<br/>You are <b>" +age+"</b> year old!</h1>" );
+        }
+        else 
+        {
+          console.log("Hello " + name + "!")
+          console.log("Your input is incorrect!")
+          document.writeln( "<h1>Hello <span>" + name + "</span>!<br/>Your age is a mystery!</h1>" );
+          window.alert( "Your input is incorrect!" );
+        }
+     </script>
+    </head>
+    <body>
+    </body>
+</html>

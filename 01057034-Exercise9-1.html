@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<!-- Fig. 13.3: draw.html -->
+<!-- A simple drawing program. -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01057034-Exercise9-1</title>
+    <style>
+        /* CSS for draw.html. */
+        #canvas {
+            width: 400px;
+            border: 1px solid #999999;
+            border-collapse: collapse;
+            float: left;
+            
+        }
+        button{
+            position: absolute;
+            left: 10px;
+            top: 420px;
+        }
+        td {
+            
+            width: 4px;
+            height: 4px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .white {
+            background-color: white;
+        }
+    </style>
+    <script>
+        // Fig. 13.4: draw.js 
+        // A simple drawing program. 
+        //initialization function to insert cells into the table
+        function createCanvas() {
+            var side = 100;
+            var tbody = document.getElementById("tablebody");
+
+            for (var i = 0; i < side; ++i) {
+                var row = document.createElement("tr");
+                for (var j = 0; j < side; ++j) {
+                    var cell = document.createElement("td");
+                    row.appendChild(cell);
+                } // end for
+
+                tbody.appendChild(row);
+            } // end for
+
+            // register mousemove listener for the table
+
+            document.getElementById("canvas").addEventListener("mousemove", processMouseMove, false);
+            document.getElementById("clearButton").addEventListener("click", clearCanvas, false);
+
+        } // end function createCanvas
+
+        // processes the onmousemove event
+        function processMouseMove(e) {
+            if (e.target.tagName.toLowerCase() == "td" && (e.buttons === 1 || e.which === 1)) {
+                // 根據按下的鍵進行繪製
+                if (e.ctrlKey) {
+                    drawingColor = "blue";
+                } 
+                else if (e.shiftKey) {
+                    drawingColor = "red";
+                } 
+                else if (e.altKey) {
+                    drawingColor = "green";
+                } 
+                else {
+                    drawingColor = "white";
+                }
+                e.target.setAttribute("class", drawingColor);
+            } // end if
+        } // end function processMouseMove
+        function clearCanvas() {
+            var cells = document.querySelectorAll("#canvas td");
+            cells.forEach(cell => {cell.setAttribute("class", "white");});
+        } // end function clearCanvas
+
+        window.addEventListener("load", createCanvas, false);
+    </script>
+</head>
+
+<body>
+    <table id="canvas">
+        <tbody id="tablebody"></tbody>
+    </table>
+    <caption>
+        &nbsp Hold <em>Ctrl</em> and drag the mouse to draw blue.</br>
+        &nbsp Hold <em>Shift</em> and drag the mouse to draw red.</br>
+        &nbsp Hold <em>Alt</em> and drag the mouse to draw green.</br>
+        &nbsp Drag the mouse only to draw white (an eraser).
+    </caption>
+    </br>
+    <button id="clearButton">Clear</button>
+</body>
+
+</html>
+
+<!--
+**************************************************************************
+* (C) Copyright 1992-2012 by Deitel & Associates, Inc. and               *
+* Pearson Education, Inc. All Rights Reserved.                           *
+*                                                                        *
+* DISCLAIMER: The authors and publisher of this book have used their     *
+* best efforts in preparing the book. These efforts include the          *
+* development, research, and testing of the theories and programs        *
+* to determine their effectiveness. The authors and publisher make       *
+* no warranty of any kind, expressed or implied, with regard to these    *
+* programs or to the documentation contained in these books. The authors *
+* and publisher shall not be liable in any event for incidental or       *
+* consequential damages in connection with, or arising out of, the       *
+* furnishing, performance, or use of these programs.                     *
+**************************************************************************
+-->

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01057034-Exercise8-1</title>
+    <style type="text/CSS">
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            background-color: lightblue;
+            font-family: Perpetua;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            padding: 4px;
+        }
+
+        th {
+            text-align: center;
+            color: white;
+            background-color: darkblue;
+        }
+
+        tr.oddrow {
+            background-color: white;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        
+        window.addEventListener( "load", start, false );
+
+        function start()
+        {
+            var saveButton = document.getElementById( "addButton" );
+            saveButton.addEventListener( "click", saveSearch, false );
+            var clearButton = document.getElementById( "removeAllButton" );
+            clearButton.addEventListener( "click", clearAllSearches, false );
+            loadSearches(); // load the previously saved searches
+        }
+
+        function saveSearch() 
+        {
+            day = new Date().getTime();
+            var BookTitlevalue = document.getElementById("BookTitle").value;
+            var Authorvalue = document.getElementById("Author").value;
+            var Yearvalue = document.getElementById("Year").value;
+            var BookURLvalue = document.getElementById("BookURL").value;
+            //var query = new Object();
+            query = {BookTitle:BookTitlevalue, Author:BookTitlevalue, Year:BookTitlevalue , BookURL:BookTitlevalue}
+            var tag = "ntou-"+day;
+            localStorage.setItem("ntou-"+day, JSON.stringify(query)); 
+            tag.value = ""; // clear tag input
+            query.value = ""; // clear query input
+            loadSearches(); // reload searches
+        } // end function saveSearch
+
+        function clearAllSearches() 
+        {
+            for (var key in localStorage) {
+                if (key.startsWith("ntou")) {
+                    localStorage.removeItem(key);
+                }
+            }
+            //localStorage.startsWith("ntou").clear();
+            loadSearches(); // reload searches
+        } // end function clearAllSearches
+
+        var tags;
+        function loadSearches() 
+        {
+            /*
+            if ( !window.sessionStorage.getItem( "herePreviously" ) )
+            {
+                sessionStorage.setItem( "herePreviously", "true" );
+                document.getElementById( "welcomeMessage" ).innerHTML = "Welcome to the Favorite Twitter Searches App";
+            } // end if
+            */
+            var length = localStorage.length; // number of key-value pairs
+            tags = []; // create empty array
+
+            // load all keys
+            for (var i = 0; i < length; ++i) 
+            {
+                tags[i] = localStorage.key(i);
+            } // end for
+
+            tags.sort(); // sort the keys
+            
+            
+            //var markup = "<table> <tr> <th>Title</th> <th>Author</th> <th>Year</th> <th>URL</th>  </tr>"; // used to store search link markup
+
+            // build list of links
+            var markup = "<table> <tr> <th>Title</th> <th>Author</th> <th>Year</th> <th>URL</th>  </tr>"; // used to store search link markup
+
+            // build list of links
+            for (var i = 0; i < tags.length; i++) {
+                var key = tags[i];
+                var query = JSON.parse(localStorage.getItem(key));
+
+                markup += "<tr><td><span>" + query.BookTitle + "</span></td>";
+                markup += "<td><span>" + query.Author + "</span></td>";
+                markup += "<td><span>" + query.Year + "</span></td>";
+                markup += "<td><span><a href='" + query.BookURL + "'>" + query.BookURL + "</a></span></td></tr>";
+            } // end for
+
+
+            markup += "</table>";
+            document.getElementById("display").innerHTML = markup;
+            
+        } // end function loadSearches
+
+    </script>
+</head>
+
+<body>
+    <form action="#">
+        <p>
+            <label>Book Title:</label>
+            <input type="text" id="BookTitle">
+            <label>Author(s):</label>
+            <input type="text" id="Author">
+            <label>Year:</label>
+            <input type="number" id="Year">
+            <label>Book URL:</label>
+            <input type="url" id="BookURL">
+        </p>
+        <p>
+            <input type="button" value="Add New Item" id="addButton">
+            <input type="button" value="Remove All Items" id="removeAllButton">
+        </p>
+    </form>
+    <hr>
+    <div id="display">
+    </div>
+</body>
+
+</html>

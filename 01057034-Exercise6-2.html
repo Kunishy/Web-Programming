@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Fig. 4.12: width.html -->
+<!-- Element dimensions and text alignment. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>01057034-Exercise6-2</title>
+      <style type = "text/css">
+        @import url(https://fonts.googleapis.com/earlyaccess/cwtexkai.css);
+        .line1 {
+          color: DIMGRAY
+        }
+        .line2_1{
+          color: NAVY;
+          display:inline-block;
+          
+        }
+        .line2_2{
+          color:FIREBRICK;
+          font-size: 150%;
+          display:inline-block;
+        }
+        div {
+          text-align: center;
+          font-family: "cwTeXKai",Perpetua, serif;
+        }
+      </style>
+   </head>
+   <body>
+    <div>
+      <h1 class="line1">
+        專案失敗了，是因為...
+      </h1>
+      
+      <h1 >
+        <div id = "line2_1" class="line2_1">
+        </div>
+        <div id = "line2_2" class="line2_2">
+        </div>
+      </h1>
+      <br/>
+      <img id="img" >
+    </div>
+    <script>
+        let Adj =["客戶那邊的", "我們的", "負責談需求的", "負責這個部分的", "直到上線前一天", "(雙手一攤)"]; 
+        
+        let Noun = ["專案經理", "主管", "工程師", "設計師", "外包", "User", "聯絡窗口"];
+        let Verb = ["當初沒有講清楚", "一直換", "說他肚子不舒服", "擺爛不想做了", "突然開始放長假", 
+        "去生小孩了", "離職了", "都沒甚麼 sense", "都沒有跟我講", "以為這些不用做", "一直在狀況外", 
+        "做事拖拖拉拉", "還搞不清楚狀況", "Quality 有問題", "東西一直改", "在整我", "突然就沒來了"];
+
+        let img= ["Cat","Harry","Yao","Jacky"];
+
+
+        var line2 = document.getElementById( "line2_1" );
+        var line3 = document.getElementById( "line2_2" );
+        var output1  = "";
+        var output2  = "";
+        var rand = Math.floor(Math.random() * 5);
+        output1 = output1 + Adj[rand];
+        rand = Math.floor(Math.random() * 6);
+        output1 = output1 + Noun[rand];
+        rand = Math.floor(Math.random() * 16);
+        output2 += Verb[rand];
+        line2_1.innerHTML = output1;
+        line2_2.innerHTML = output2;
+        rand = Math.floor(Math.random() * 3);
+        var pic = document.getElementById( "img" );
+        pic.setAttribute( "src", img[rand] + ".jpg" );
+     </script>
+
+
+   </body>
+</html>
+

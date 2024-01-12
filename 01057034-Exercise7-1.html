@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>01057034-Exercise7-1</title>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+		div, input {
+            font-family: "Noto Sans TC", "Perpetua", serif;
+			width: 300px;            
+        }
+		
+		div {
+            color: darkblue;
+            text-align: center;	
+			font-size: 24px;			
+        }
+
+		input {
+			font-size: 18px;
+			font-weight: bold;
+		}
+    </style>
+    <script>
+        // TODO
+        let img ;
+        let messages
+        function Play(){
+            let dicerolling = document.getElementById("doraemon");
+            img = document.getElementById("gadget");
+            messages = document.getElementById("messages");
+            messages.innerHTML = "";
+            img.setAttribute( "src", "blank" + ".png" );
+            dicerolling.play(); // play dice rolling sound
+            dicerolling.addEventListener("ended", show, false);
+        }
+        function show(){
+            const gadgetString = "任意門 時光機 竹蜻蜓 時光布 記憶麵包 縮小燈 翻譯蒟蒻 如果電話亭 穿透環 更衣照相機";
+            const StringArray = gadgetString.split(" ");
+            const ImgArray =["01","02","03","04","05","06","07","08","09","10"]
+            var rand = Math.floor(Math.random() * 9);
+            img.setAttribute( "src", ImgArray[rand] + ".png" );
+            messages.innerHTML =  "您抽到"+StringArray[rand]+"!";
+        }
+        
+    </script>
+</head>
+
+<body>
+    <img id="gadget" src="00.png" alt="gadget">
+    <form action="#">
+        <input id="play" type="button" value="抽道具" onclick="Play()">
+    </form>
+    <audio id="doraemon" preload="auto">
+        <source src="doraemon.mp3" type="audio/mpeg">
+        Browser does not support audio tag
+    </audio>
+      
+    <div id="messages">請按下Button抽出道具</div>
+</body>
+
+</html>

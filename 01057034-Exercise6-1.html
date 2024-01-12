@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Function</title>
+    <style type="text/css">
+        li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        ol {
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        img.dice {
+            width: 100px;
+            height: 100px;
+        }
+
+        img.congrats {
+            width: 440px;
+        }
+
+        #msg {
+            font-family: Helvetica, "Microsoft YaHei", "LiHei Pro", TW-Kai;
+            font-size: 120%;
+            color: navy;
+        }
+    </style>
+</head>
+<script>
+    // variables used to interact with the img elements
+    var die1Image;
+    var die2Image;
+    var die3Image;
+    var die4Image;
+
+    var congratsimg;
+
+
+
+    // register button listener and get the img elements
+    function start()
+    {
+       var button = document.getElementById( "rollButton" );
+       var button1 = document.getElementById( "cheatButton" );
+       var button2 = document.getElementById( "cheatButton2" );
+       button.addEventListener( "click", rollDice, false );
+       button1.addEventListener( "click", cheatButton, false );
+       button2.addEventListener( "click", cheatButton2, false );
+       die1Image = document.getElementById( "die1" );
+       die2Image = document.getElementById( "die2" );
+       die3Image = document.getElementById( "die3" );
+       die4Image = document.getElementById( "die4" );
+    } // end function start
+
+    function cheatButton()
+    {
+        var dieValue = Math.floor( 1 + Math.random() * 6 );
+
+        die1Image.setAttribute( "src", "die" + dieValue + ".jpg" );
+        die1Image.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+        die2Image.setAttribute( "src", "die" + dieValue + ".jpg" );
+        die2Image.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+        die3Image.setAttribute( "src", "die" + dieValue + ".jpg" );
+        die3Image.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+        die4Image.setAttribute( "src", "die" + dieValue + ".jpg" );
+        die4Image.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+        document.getElementById("msg").innerHTML='congratulation! Your roll is "一色"!<br/><img src="congrats.png" width="440px">';
+
+        
+    } // end function rollDice
+
+    function cheatButton2()
+    {
+        var dieValue = Math.floor( 1 + Math.random() * 5 );
+
+        die1Image.setAttribute( "src", "die6.jpg" );
+        die1Image.setAttribute( "alt", "die image with 6 spot(s)" );
+        die2Image.setAttribute( "src", "die6.jpg" );
+        die2Image.setAttribute( "alt", "die image with 6 spot(s)" );
+
+        die3Image.setAttribute( "src", "die" + dieValue + ".jpg" );
+        die3Image.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+        die4Image.setAttribute( "src", "die" + dieValue + ".jpg" );
+        die4Image.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+        document.getElementById("msg").innerHTML='congratulation! Your roll is "十八"!<br/><img src="congrats.png" width="440px"><br/>Your score is 12!';
+
+        
+    } // end function rollDice
+
+    
+
+    // roll the dice
+    function rollDice()
+    {
+        let list = [0,0,0,0,0,0,0]
+        var dieValue1 = Math.floor( 1 + Math.random() * 6 );
+        die1Image.setAttribute( "src", "die" + dieValue1 + ".jpg" );
+        die1Image.setAttribute( "alt", "die image with " + dieValue1 + " spot(s)" );
+        list[dieValue1] = list[dieValue1] +1;
+        var dieValue2 = Math.floor( 1 + Math.random() * 6 );
+        die2Image.setAttribute( "src", "die" + dieValue2 + ".jpg" );
+        die2Image.setAttribute( "alt", "die image with " + dieValue2 + " spot(s)" );
+        list[dieValue2] = list[dieValue2] +1;
+        var dieValue3 = Math.floor( 1 + Math.random() * 6 );
+        die3Image.setAttribute( "src", "die" + dieValue3 + ".jpg" );
+        die3Image.setAttribute( "alt", "die image with " + dieValue3 + " spot(s)" );
+        list[dieValue3] = list[dieValue3] +1;
+        var dieValue4 = Math.floor( 1 + Math.random() * 6 );
+        die4Image.setAttribute( "src", "die" + dieValue4 + ".jpg" );
+        die4Image.setAttribute( "alt", "die image with " + dieValue4 + " spot(s)" );
+        list[dieValue4] = list[dieValue4] +1;
+        if (list[dieValue4] == 4)
+            document.getElementById("msg").innerHTML='congratulation! Your roll is "一色"!<br/><img src="congrats.png" width="440px">';
+        else if (list[dieValue4] == 3 || list[dieValue3] == 3)
+            document.getElementById("msg").innerHTML='No decision,please re-roll the dice!';
+        else if (list[dieValue4] == 1 && list[dieValue3] == 1 && list[dieValue2] == 1)
+            document.getElementById("msg").innerHTML='Oops! Your roll is "無面"!';
+        else if (list[dieValue4] == 2 && list[dieValue3] == 2 && list[dieValue2] == 2)
+        {
+            let max=0;
+            if (max<dieValue4)
+                max = dieValue4;
+            if (max<dieValue3)
+                max = dieValue3;
+            if (max<dieValue2)
+                max = dieValue2;
+            max = max+max;
+            if (max == 12)
+                document.getElementById("msg").innerHTML='congratulation! Your roll is "十八"!<br/><img src="congrats.png" width="440px"><br/>Your score is 12!';
+            else
+                document.getElementById("msg").innerHTML='Your score is '+max+'!';
+        }
+        else
+        {
+            let max=0;
+            if (list[dieValue1] == 1)
+                max = max+dieValue1;
+            if (list[dieValue2] == 1)
+                max = max+dieValue2;
+            if (list[dieValue3] == 1)
+                max = max + dieValue3;
+            if (list[dieValue4] == 1)
+                max = max + dieValue4;
+            document.getElementById("msg").innerHTML='Your score is '+max+'!';
+        }
+
+
+       
+    } // end function rollDice
+
+    // set src and alt attributes for a die
+    function setImage( dieImg )
+    {
+        var dieValue = Math.floor( 1 + Math.random() * 6 );
+        dieImg.setAttribute( "src", "die" + dieValue + ".jpg" );
+        dieImg.setAttribute( "alt", "die image with " + dieValue + " spot(s)" );
+
+        
+    } // end function setImage
+
+    window.addEventListener( "load", start, false );
+    
+ </script>
+
+<body>
+    <form action="#">
+        <input id="rollButton" type="button" value="Roll Dice">
+        <input id="cheatButton" type="button" value="Shortcut">
+        <input id="cheatButton2" type="button" value="Shortcut2">
+    </form>
+    <ol>
+        <li><img id="die1" class="dice" src="blank.jpg" alt="blank image"></li>
+        <li><img id="die2" class="dice" src="blank.jpg" alt="blank image"></li>
+        <li><img id="die3" class="dice" src="blank.jpg" alt="blank image"></li>
+        <li><img id="die4" class="dice" src="blank.jpg" alt="blank image"></li>
+    </ol>
+    <div id="msg"></div>
+</body>
+
+</html>

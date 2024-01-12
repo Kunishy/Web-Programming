@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<!-- Fig. 4.17: dropdown.html -->
+<!-- CSS drop-down menu. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>01057034-Exercise3-2</title>
+      
+      <style type = "text/css">
+         h1 {
+            text-align: center;
+            font-family: Perpetua, sans-serif;
+            color: RoyalBlue;
+         }
+         body            { 
+            font-family: Perpetua, sans-serif; 
+         }
+         ul {
+            position: absolute;
+            width: calc(100%/6);
+         }
+         nav             { 
+            font-weight: bold;
+            color: white;
+            border: 2px solid RoyalBlue;
+            text-align: center;
+            width: calc(100%/6);
+            background-color: RoyalBlue; 
+         }
+         nav ul          { 
+            
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0; 
+         }
+         nav:hover ul    { 
+            display: block; 
+         }
+         nav ul li       { 
+            border-top: 2px solid RoyalBlue;
+            background-color: white;
+            color: black; 
+         }
+         nav ul li:hover { 
+            background-color: PowderBlue; 
+         }
+         a               { 
+            text-decoration: none; 
+         }
+         .flex-container {
+            margin: 0;
+            display: flex;
+         }
+
+        @media (max-width: 600px) {
+         .flex-container {
+            display: inline-block;
+            width: 100%;
+         }
+          nav{
+            width: 100%;
+          }
+          ul{
+            position: relative;
+            width: 100%;
+          }
+          div{
+            width: 100%;
+          }
+        }
+      </style>
+
+   </head>
+
+   <body>
+      <h1>Web Intelligence</h1>
+      <div class="flex-container">
+         
+         <nav >JavaScript
+            <ul >
+               <li><a href = "https://www.w3schools.com/js/default.asp"> W3Schools</a></li>
+               <li><a href = "https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">MDN</a></li>
+               <li><a href = "https://www.json.org/json-en.html">JSON</a></li>
+            </ul>
+         </nav>
+         
+         
+         <nav>jQuery
+            <ul>
+               <li><a href = "https://jquery.com/"> jQuery.org</a></li>
+               <li><a href = "https://jqueryui.com/">jQuery UI</a></li>
+               <li><a href = "https://www.w3schools.com/jquERy/default.asp">jQuery Tutorial</a></li>
+            </ul>
+         </nav>
+         <nav>node.js
+            <ul>
+               <li><a href = "https://www.w3schools.com/nodejs/"> Node.js Tutorial</a></li>
+            </ul>
+         </nav>
+         <nav>PHP
+            <ul>
+               <li></li>
+            </ul>
+         </nav>
+         <nav>ASP.Net
+            <ul>
+               <li></li>
+            </ul>
+         </nav>
+         <nav>Servlet/JSP
+            <ul>
+               <li></li>
+            </ul>
+         </nav>
+      </div>
+      <iframe src="01057034-Exercise3-1.html" Width="100%" Height = "550 px"></iframe>
+   </body>
+
+</html>
+
